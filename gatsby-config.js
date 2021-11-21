@@ -1,17 +1,18 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Starter Blog`,
+    title: `My Blog`,
     author: {
-      name: `Kyle Mathews`,
-      summary: `who lives and works in San Francisco building useful things.`,
+      name: `Cezary Krawiec`,
     },
-    description: `A starter blog demonstrating what Gatsby can do.`,
-    siteUrl: `https://gatsbystarterblogsource.gatsbyjs.io/`,
+    description: `Blog about web development and self development`,
+    siteUrl: `https://cezarykrawiec.pl`,
     social: {
-      twitter: `kylemathews`,
+      linkedin: `cezarykrawiec`,
+      github: `krawieccezary`,
     },
   },
   plugins: [
+    `gatsby-plugin-fontawesome-css`,
     `gatsby-plugin-image`,
     {
       resolve: `gatsby-source-filesystem`,

@@ -12,6 +12,7 @@
   --maxWidth-4xl: 56rem;
   --maxWidth-full: "100%";
   --maxWidth-wrapper: var(--maxWidth-2xl);
+  --maxWidth-header: var(--maxWidth-4xl);
   --spacing-px: "1px";
   --spacing-0: 0;
   --spacing-1: 0.25rem;
@@ -85,6 +86,7 @@ body {
 
 footer {
   padding: var(--spacing-6) var(--spacing-0);
+  text-align: center;
 }
 
 hr {
@@ -240,10 +242,24 @@ a:focus {
 
 /* Custom classes */
 
+.global-wrapper-outer {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
 .global-wrapper {
   margin: var(--spacing-0) auto;
   max-width: var(--maxWidth-wrapper);
-  padding: var(--spacing-10) var(--spacing-5);
+  padding: var(--spacing-10) var(--spacing-5) 0;
+  flex-grow: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.global-wrapper > main {
+  flex-grow: 1;
 }
 
 .global-wrapper[data-is-root-path="true"] .bio {
@@ -251,11 +267,23 @@ a:focus {
 }
 
 .global-header {
-  margin-bottom: var(--spacing-12);
+  margin: var(--spacing-0) auto var(--spacing-12);
+  padding: var(--spacing-5) var(--spacing-5) 0;
+  max-width: var(--maxWidth-header);
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.nav-link {
+  color: var(--color-heading-black);
+  text-decoration: none;
+  margin: 0 var(--spacing-3);
 }
 
 .main-heading {
-  font-size: var(--fontSize-7);
+  font-size: var(--fontSize-5);
   margin: 0;
 }
 
