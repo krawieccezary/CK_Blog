@@ -6,6 +6,22 @@ import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons'
 const Layout = ({ location, title, children }) => {
   const rootPath = `${__PATH_PREFIX__}/`
   const isRootPath = location.pathname === rootPath
+  let heading 
+
+  if(isRootPath) {
+    heading = (
+      <h1 className="main-heading">
+        <Link to="/">
+          {title}
+        </Link>
+      </h1>)
+  } else {
+    heading = (
+      <Link className="main-heading" to="/">
+        {title}
+      </Link>
+    )
+  }
 
   const data = useStaticQuery(graphql`
     query SocialQuery {
@@ -25,14 +41,10 @@ const Layout = ({ location, title, children }) => {
   return (
     <div className="global-wrapper-outer">
     <header className="global-header">
-      <h1 className="main-heading">
-        <Link to="/">
-          {title}
-        </Link>
-      </h1>
+      {heading}
       <nav>
-        <Link className="nav-link" to="/about-me">About me</Link>
-        <Link className="nav-link" to="/contact">Contact</Link>
+        <Link className="nav-link" activeClassName="active" to="/about-me">About me</Link>
+        <Link className="nav-link" activeClassName="active" to="/contact">Contact</Link>
         <a className="nav-link" href={`https://github.com/${social.github}`} rel="noreferrer" target="_blank">
           <FontAwesomeIcon icon={faGithub} />
         </a>

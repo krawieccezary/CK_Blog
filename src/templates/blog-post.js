@@ -1,20 +1,21 @@
 import * as React from "react"
 import { Link, graphql } from "gatsby"
+import { StructuredText } from 'react-datocms';
 
-import Bio from "../components/bio"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 
 const BlogPostTemplate = ({ data, location }) => {
-  const post = data.markdownRemark
+  console.log(data);
+  const post = data.datoCmsPost
   const siteTitle = data.site.siteMetadata?.title || `Title`
   const { previous, next } = data
 
   return (
     <Layout location={location} title={siteTitle}>
       <Seo
-        title={post.frontmatter.title}
-        description={post.frontmatter.description || post.excerpt}
+        title={post.title}
+        description={post.introduction}
       />
       <article
         className="blog-post"
@@ -22,16 +23,13 @@ const BlogPostTemplate = ({ data, location }) => {
         itemType="http://schema.org/Article"
       >
         <header>
-          <h1 itemProp="headline">{post.frontmatter.title}</h1>
-          <p>{post.frontmatter.date}</p>
+          <h1 itemProp="headline">{post.title}</h1>
+          <small>{post.meta.publishedAt}</small>
         </header>
-        <section
-          dangerouslySetInnerHTML={{ __html: post.html }}
-          itemProp="articleBody"
-        />
+        <StructuredText data={post.content} />
         <hr />
         <footer>
-          <Bio />
+          {post.tags.map(tag => <a href={`${__PATH_PREFIX__}/tag?${tag.slug}`}>{`#${tag.name}  `}</a>)}
         </footer>
       </article>
       <nav className="blog-post-nav">
@@ -46,15 +44,15 @@ const BlogPostTemplate = ({ data, location }) => {
         >
           <li>
             {previous && (
-              <Link to={previous.fields.slug} rel="prev">
-                ← {previous.frontmatter.title}
+              <Link to={`${__PATH_PREFIX__}/${previous.slug}`} rel="prev">
+                ← {previous.title}
               </Link>
             )}
           </li>
           <li>
             {next && (
-              <Link to={next.fields.slug} rel="next">
-                {next.frontmatter.title} →
+              <Link to={`${__PATH_PREFIX__}/${next.slug}`} rel="next">
+                {next.title} →
               </Link>
             )}
           </li>
@@ -77,31 +75,31 @@ export const pageQuery = graphql`
         title
       }
     }
-    markdownRemark(id: { eq: $id }) {
-      id
-      excerpt(pruneLength: 160)
-      html
-      frontmatter {
-        title
-        date(formatString: "MMMM DD, YYYY")
-        description
+    datoCmsPost(
+      id: {eq: $id}
+    ) {
+      content {
+        blocks
+        links
+        value
       }
-    }
-    previous: markdownRemark(id: { eq: $previousPostId }) {
-      fields {
+      meta {
+        publishedAt(formatString: "D-M-Y")
+      }
+      slug
+      title
+      tags {
+        name
         slug
       }
-      frontmatter {
-        title
-      }
     }
-    next: markdownRemark(id: { eq: $nextPostId }) {
-      fields {
-        slug
-      }
-      frontmatter {
-        title
-      }
+    previous: datoCmsPost(id: { eq: $previousPostId }) {
+      slug
+      title
+    }
+    next: datoCmsPost(id: { eq: $nextPostId }) {
+      slug
+      title
     }
   }
 `

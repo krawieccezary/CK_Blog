@@ -11,14 +11,19 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   const result = await graphql(
     `
       {
-        allMarkdownRemark(
-          sort: { fields: [frontmatter___date], order: ASC }
-          limit: 1000
-        ) {
+        allDatoCmsPost(sort: {fields: meta___publishedAt, order: DESC}, filter: {meta: {status: {eq: "published"}}}){
           nodes {
             id
-            fields {
-              slug
+            title
+            introduction
+            slug
+            meta {
+              publishedAt(formatString: "D-M-Y")
+            }
+            content {
+              blocks
+              links
+              value
             }
           }
         }
@@ -34,7 +39,8 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     return
   }
 
-  const posts = result.data.allMarkdownRemark.nodes
+  const posts = result.data.allDatoCmsPost.nodes
+
 
   // Create blog posts pages
   // But only if there's at least one markdown file found at "content/blog" (defined in gatsby-config.js)
@@ -46,12 +52,13 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       const nextPostId = index === posts.length - 1 ? null : posts[index + 1].id
 
       createPage({
-        path: post.fields.slug,
+        path: post.slug,
         component: blogPost,
         context: {
           id: post.id,
           previousPostId,
           nextPostId,
+          post
         },
       })
     })
@@ -90,26 +97,16 @@ exports.createSchemaCustomization = ({ actions }) => {
 
     type Author {
       name: String
-      summary: String
     }
 
     type Social {
-      twitter: String
-    }
-
-    type MarkdownRemark implements Node {
-      frontmatter: Frontmatter
-      fields: Fields
+      linkedin: String
+      github: String
     }
 
     type Frontmatter {
       title: String
       description: String
-      date: Date @dateformat
-    }
-
-    type Fields {
-      slug: String
     }
   `)
 }
