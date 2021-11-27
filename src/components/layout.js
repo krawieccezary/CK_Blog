@@ -3,7 +3,7 @@ import { Link, useStaticQuery, graphql } from "gatsby"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons'
 
-const Layout = ({ location, title, children }) => {
+const Layout = ({ location, title, children, handleResetTag }) => {
   const rootPath = `${__PATH_PREFIX__}/`
   const isRootPath = location.pathname === rootPath
   let logo 
@@ -11,7 +11,7 @@ const Layout = ({ location, title, children }) => {
   if(isRootPath) {
     logo = (
       <h1 className="main-heading">
-        <Link to="/">
+        <Link to="/" onClick={() => handleResetTag()}>
           {title}
         </Link>
       </h1>)

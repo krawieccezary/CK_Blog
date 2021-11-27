@@ -14,7 +14,6 @@
     "@fortawesome/react-fontawesome": "^0.1.16",
     "dotenv": "^10.0.0",
     "gatsby": "^4.2.0",
-    "gatsby-plugin-config": "^1.0.7",
     "gatsby-plugin-feed": "^4.2.0",
     "gatsby-plugin-fontawesome-css": "^1.2.0",
     "gatsby-plugin-gatsby-cloud": "^4.2.0",
