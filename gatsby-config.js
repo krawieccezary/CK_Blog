@@ -1,6 +1,6 @@
-require("dotenv").config({
-  path: `.env.${process.env.NODE_ENV}`,
-})
+require('dotenv').config({
+  path: `.env.${process.env.NODE_ENV}`, 
+});
 
 module.exports = {
   siteMetadata: {
@@ -8,7 +8,7 @@ module.exports = {
     author: {
       name: `Cezary Krawiec`,
     },
-    description: `Blog about web development and self development`,
+    description: `Blog about web and personal development`,
     siteUrl: `https://cezarykrawiec.pl`,
     social: {
       linkedin: `cezarykrawiec`,
@@ -18,6 +18,7 @@ module.exports = {
   plugins: [
     `gatsby-plugin-fontawesome-css`,
     `gatsby-plugin-image`,
+    `gatsby-plugin-config`,
     {
       resolve: `gatsby-source-datocms`,
       options: {

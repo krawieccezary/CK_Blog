@@ -29,7 +29,7 @@ const BlogPostTemplate = ({ data, location }) => {
         <StructuredText data={post.content} />
         <hr />
         <footer>
-          {post.tags.map(tag => <a href={`${__PATH_PREFIX__}/tag?${tag.slug}`}>{`#${tag.name}  `}</a>)}
+          {post.tags.map(tag => <Link key={tag.name} to="/" state={{ tag }}>{`#${tag.name}`}</Link>)}
         </footer>
       </article>
       <nav className="blog-post-nav">
@@ -89,8 +89,8 @@ export const pageQuery = graphql`
       slug
       title
       tags {
+        originalId
         name
-        slug
       }
     }
     previous: datoCmsPost(id: { eq: $previousPostId }) {

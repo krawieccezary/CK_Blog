@@ -6,17 +6,17 @@ import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons'
 const Layout = ({ location, title, children }) => {
   const rootPath = `${__PATH_PREFIX__}/`
   const isRootPath = location.pathname === rootPath
-  let heading 
+  let logo 
 
   if(isRootPath) {
-    heading = (
+    logo = (
       <h1 className="main-heading">
         <Link to="/">
           {title}
         </Link>
       </h1>)
   } else {
-    heading = (
+    logo = (
       <Link className="main-heading" to="/">
         {title}
       </Link>
@@ -41,7 +41,7 @@ const Layout = ({ location, title, children }) => {
   return (
     <div className="global-wrapper-outer">
     <header className="global-header">
-      {heading}
+      {logo}
       <nav>
         <Link className="nav-link" activeClassName="active" to="/about-me">About me</Link>
         <Link className="nav-link" activeClassName="active" to="/contact">Contact</Link>

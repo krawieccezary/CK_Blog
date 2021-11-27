@@ -2,7 +2,7 @@ import * as React from "react";
 import { Link } from 'gatsby';
 
 
-const Article = ({ slug, title, meta, introduction, tags }) => (
+const Article = ({ slug, title, introduction, tags, setTag, publishedAt }) => (
   <article
     className="post-list-item"
     itemScope
@@ -14,7 +14,7 @@ const Article = ({ slug, title, meta, introduction, tags }) => (
           <span itemProp="headline">{title}</span>
         </Link>
       </h2>
-      <small>{meta.publishedAt}</small>
+      <small>{publishedAt}</small>
     </header>
     <section>
       <p
@@ -24,8 +24,8 @@ const Article = ({ slug, title, meta, introduction, tags }) => (
         itemProp="description"
       />
     </section>
-    <footer> 
-      {tags.map(tag => <a key={tag.name} href={`${__PATH_PREFIX__}/tag?${tag.slug}`}>{`#${tag.name}  `}</a>)}
+    <footer className="post-list-item__tags-footer"> 
+      {tags.map(tag => <button key={tag.name} onClick={() => setTag(tag)}>{`#${tag.name}`}</button>)}
     </footer>
   </article>
 ) 
