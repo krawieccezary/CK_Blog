@@ -21,7 +21,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
               publishedAt(formatString: "D-M-Y")
             }
             content {
-              blocks
               links
               value
             }

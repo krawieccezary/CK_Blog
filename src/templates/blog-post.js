@@ -1,6 +1,7 @@
 import * as React from "react"
 import { Link, graphql } from "gatsby"
 import { StructuredText } from 'react-datocms';
+import { GatsbyImage } from 'gatsby-plugin-image';
 
 import Layout from "../components/layout"
 import Seo from "../components/seo"
@@ -26,7 +27,17 @@ const BlogPostTemplate = ({ data, location }) => {
           <h1 itemProp="headline">{post.title}</h1>
           <small>{post.meta.publishedAt}</small>
         </header>
-        <StructuredText data={post.content} />
+        <StructuredText 
+          data={post.content} 
+          renderBlock={({ record }) => {
+            switch (record.__typename) {
+              case 'DatoCmsImage':
+                return <GatsbyImage image={record.image.gatsbyImageData} alt={record.image.alt} />;
+              default:
+                return null;
+            }
+          }}
+        />
         <hr />
         <footer>
           {post.tags.map(tag => <Link key={tag.name} to="/" state={{ tag }}>{`#${tag.name}`}</Link>)}
@@ -79,9 +90,19 @@ export const pageQuery = graphql`
       id: {eq: $id}
     ) {
       content {
-        blocks
         links
         value
+        blocks {
+          __typename
+          ... on DatoCmsImage {
+            id: originalId
+            image {
+              url
+              alt
+              gatsbyImageData
+            }
+          }
+        }
       }
       meta {
         publishedAt(formatString: "D-M-Y")
