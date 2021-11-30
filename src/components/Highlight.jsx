@@ -10,10 +10,17 @@ const Pre = styled.pre`
   padding: 1.5em;
   border-radius: 5px;
   width: var(--maxWidth-header);
+  overflow: auto;
 
   @media (max-width: 58rem) {
     width: calc(100vw - 2rem);
     margin: 1em calc(-1 * ((100vw + .5rem - var(--maxWidth-wrapper)) / 2));
+  }
+
+  @media (max-width: 687px) {
+    width: auto;
+    margin: 1em 0;
+    padding: .5rem 1rem;
   }
 `;
 

@@ -8,14 +8,13 @@ import Seo from "../components/seo";
 const AboutMe = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`;
   const aboutPage = data.datoCmsAbout;
-  console.log(data);
 
   return (
     <Layout location={location} title={siteTitle}>
       <Seo title="About me" />
       <div className="bio">
         <div className="bio-content">
-          <h2>{aboutPage.header}</h2>
+          <h1>{aboutPage.header}</h1>
           <main>{aboutPage.content}</main>
         </div>
         <GatsbyImage image={aboutPage.image.gatsbyImageData} alt="me"/>

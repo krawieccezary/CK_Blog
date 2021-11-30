@@ -206,7 +206,7 @@ li *:last-child {
 
 li > ul,
 li > ol {
-  margin-left: var(--spacing-8);
+  margin-left: var(--spacing-4);
   margin-top: calc(var(--spacing-8) / 2);
 }
 
@@ -350,7 +350,7 @@ button {
   z-index: -1;
 }
 .main-heading:hover::before {
-  animation: headingDotAnimation 2s ease both infinite;
+  animation: headingDotAnimation 2s 0.7s ease both infinite;
 }
 
 @keyframes headingDotAnimation {
@@ -467,6 +467,41 @@ button {
   }
   ul,
   ol {
-    list-style-position: inside;
+    padding-left: var(--spacing-4);
+  }
+  ul > ul,
+  ol > ol {
+    padding-left: var(--spacing-0);
+  }
+
+  .global-header nav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-content: center;
+    text-align: center;
+    z-index: 1;
+    transform: translateX(100%);
+    transition: transform 0.5s ease-in-out;
+  }
+
+  .main-heading {
+    margin: 0 auto;
+  }
+
+  .global-header .nav-link {
+    margin: 0.5rem 0;
+    padding: 0.5rem;
+    width: 100%;
+  }
+  .global-header .nav-link--icon {
+    width: auto;
+    margin: 1rem;
   }
 }
