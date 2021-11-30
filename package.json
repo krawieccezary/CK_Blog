@@ -14,6 +14,7 @@
     "@fortawesome/react-fontawesome": "^0.1.16",
     "dotenv": "^10.0.0",
     "gatsby": "^4.2.0",
+    "gatsby-plugin-config": "^1.0.7",
     "gatsby-plugin-feed": "^4.2.0",
     "gatsby-plugin-fontawesome-css": "^1.2.0",
     "gatsby-plugin-gatsby-cloud": "^4.2.0",
@@ -32,6 +33,7 @@
     "gatsby-source-filesystem": "^4.2.0",
     "gatsby-transformer-remark": "^5.2.0",
     "gatsby-transformer-sharp": "^4.2.0",
+    "prism-react-renderer": "^1.2.1",
     "prismjs": "^1.25.0",
     "react": "^17.0.1",
     "react-code-blocks": "^0.0.9-0",
@@ -39,6 +41,7 @@
     "react-dom": "^17.0.1",
     "react-helmet": "^6.1.0",
     "react-spinkit": "^3.0.0",
+    "styled-components": "^5.3.3",
     "typeface-merriweather": "0.0.72",
     "typeface-montserrat": "0.0.75"
   },

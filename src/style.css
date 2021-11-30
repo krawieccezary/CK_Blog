@@ -350,18 +350,15 @@ button {
   z-index: -1;
 }
 .main-heading:hover::before {
-  animation: headingDotAnimation 2s ease infinite;
+  animation: headingDotAnimation 2s ease both infinite;
 }
 
 @keyframes headingDotAnimation {
-  33% {
+  20% {
     transform: translateY(0%);
   }
-  66% {
+  93% {
     transform: translateY(-100%);
-  }
-  100% {
-    transform: translateY(-50%);
   }
 }
 

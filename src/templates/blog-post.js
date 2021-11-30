@@ -1,14 +1,15 @@
 import * as React from "react"
 import { Link, graphql } from "gatsby"
-import { StructuredText } from 'react-datocms';
+import { renderRule, StructuredText } from 'react-datocms';
+import { isCode } from 'datocms-structured-text-utils';
 import { GatsbyImage } from 'gatsby-plugin-image';
 
+import Highlight from "../components/Highlight";
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 
 const BlogPostTemplate = ({ data, location }) => {
-  console.log(data);
-  const post = data.datoCmsPost
+  const post = data.datoCmsPost;
   const siteTitle = data.site.siteMetadata?.title || `Title`
   const { previous, next } = data
 
@@ -29,10 +30,26 @@ const BlogPostTemplate = ({ data, location }) => {
         </header>
         <StructuredText 
           data={post.content} 
+          customRules={[
+            renderRule(isCode, ({ node, key }) => {
+              return (
+                <Highlight
+                  key={key}
+                  code={node.code}
+                  language={node.language}
+                  linesToBeHighlighted={node.highlight}
+                />
+              );
+            }),
+          ]}
           renderBlock={({ record }) => {
             switch (record.__typename) {
               case 'DatoCmsImage':
-                return <GatsbyImage image={record.image.gatsbyImageData} alt={record.image.alt} />;
+                return <GatsbyImage 
+                        image={record.image.gatsbyImageData} 
+                        alt={record.image.alt} 
+                        title={record.image.title}
+                        />;
               default:
                 return null;
             }
@@ -97,8 +114,8 @@ export const pageQuery = graphql`
           ... on DatoCmsImage {
             id: originalId
             image {
-              url
               alt
+              title
               gatsbyImageData
             }
           }

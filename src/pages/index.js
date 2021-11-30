@@ -57,7 +57,6 @@ const BlogIndex = ({ data, location }) => {
   const [{posts, tag}, setState] = useState({posts: initialPosts, tag: initialTag});
   const [error, setFetchError] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  console.log(posts);
 
 
   useEffect(() => {
@@ -90,7 +89,6 @@ const BlogIndex = ({ data, location }) => {
         },
           error => {
             setFetchError(true);
-            console.log('error', error);
         })
     }
   }
