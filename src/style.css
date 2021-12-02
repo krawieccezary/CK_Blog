@@ -491,6 +491,10 @@ button {
     transition: transform 0.5s ease-in-out;
   }
 
+  .global-header nav.active {
+    transform: translateX(0);
+  }
+
   .main-heading {
     margin: 0 auto;
   }
@@ -500,6 +504,7 @@ button {
     padding: 0.5rem;
     width: 100%;
   }
+
   .global-header .nav-link--icon {
     width: auto;
     margin: 1rem;
