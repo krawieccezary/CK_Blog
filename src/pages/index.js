@@ -6,8 +6,11 @@ import { formatDate } from "../utils/utils";
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import Article from "../components/article";
-import FetchError from '../components/FetchError';
+import ErrorMessage from '../components/ErrorMessage';
 import LoadingSpinner from '../components/LoadingSpinner';
+
+import fetchErrorImage from '../images/fetch-error.png';
+import emptyPostsImage from '../images/empty-blog.png';
 
 function getTagQuery(tagID){
   return `
@@ -82,10 +85,10 @@ const BlogIndex = ({ data, location }) => {
         .then(
           result => {
             setIsLoading(false);
-          setState({
-            posts: result.data.allPosts,
-            tag: tag
-          });
+            setState({
+              posts: result.data.allPosts,
+              tag: tag
+            });
         }).catch(err => {
           setFetchError(true);
         })
@@ -96,7 +99,7 @@ const BlogIndex = ({ data, location }) => {
     return (
       <Layout location={location} title={siteTitle} handleResetTag={handleResetTagClick}>
         <Seo title="All posts" />
-        <FetchError errorMessage={error.message}/>
+        <ErrorMessage errorImage={fetchErrorImage} errorMessage={'Houston, we have a problem! Come back later.'}/>
       </Layout>
     ) 
   } else if(isLoading) {  
@@ -112,9 +115,7 @@ const BlogIndex = ({ data, location }) => {
     return (
       <Layout location={location} title={siteTitle} handleResetTag={handleResetTagClick}>
         <Seo title="All posts" />
-        <p>
-          No blog posts found.
-        </p>
+        <ErrorMessage errorImage={emptyPostsImage} errorMessage={'No blog posts found.'}/>
       </Layout>
     )
   }
