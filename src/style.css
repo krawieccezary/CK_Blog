@@ -338,6 +338,7 @@ textarea:focus::placeholder {
   box-shadow: 0px 0px 0px 0px rgb(0 0 0 / 60%);
   will-change: box-shadow;
   background-color: #fff;
+  z-index: 2;
 }
 
 .global-header.isScroll {
@@ -500,8 +501,11 @@ textarea:focus::placeholder {
   margin-right: var(--spacing-4);
 }
 
+.blog-post header {
+  margin-bottom: var(--spacing-6);
+}
 .blog-post header h1 {
-  margin: var(--spacing-0) var(--spacing-0) var(--spacing-4) var(--spacing-0);
+  margin: var(--spacing-0) var(--spacing-0) var(--spacing-0) var(--spacing-0);
 }
 
 .blog-post header p {

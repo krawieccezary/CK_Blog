@@ -9,6 +9,7 @@ const Wrapper = styled.div`
 
 const Image = styled.img`
   max-width: 500px;
+  width: 90%;
 `;
 
 const ErrorMessage = ({ errorMessage, errorImage }) => {

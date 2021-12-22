@@ -47,7 +47,7 @@ const BlogPostTemplate = ({ data, location }) => {
               case 'DatoCmsImage':
                 return <GatsbyImage 
                         image={record.image.gatsbyImageData} 
-                        alt={record.image.alt} 
+                        alt={record.image.alt ? record.image.alt : ''} 
                         title={record.image.title}
                         />;
               default:
