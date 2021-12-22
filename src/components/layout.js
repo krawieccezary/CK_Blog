@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "gatsby";
 
 import Logo from '../components/Logo';
 import Menu from "../components/Menu";
@@ -21,15 +20,17 @@ const Layout = ({ location, title, children, handleResetTag }) => {
   return (
     <div className="global-wrapper-outer">
     <header className="global-header">
-      <Logo isRootPath={isRootPath} title={title} handleResetTag={handleResetTag} />
-      <MenuBurger isMobile={isMobile} setIsOpen={() => setIsOpen(!isOpen)} />
-      <Menu 
-        isOpen={isOpen} 
-        setIsOpen={() => setIsOpen(false)} 
-        isMobile={isMobile} 
-        isRootPath={isRootPath} 
-        title={title} 
-      />
+      <div className="global-header-inner">
+        <Logo isRootPath={isRootPath} title={title} handleResetTag={handleResetTag} />
+        <MenuBurger isMobile={isMobile} setIsOpen={() => setIsOpen(!isOpen)} />
+        <Menu 
+          isOpen={isOpen} 
+          setIsOpen={() => setIsOpen(false)} 
+          isMobile={isMobile} 
+          isRootPath={isRootPath} 
+          title={title} 
+        />
+      </div>
     </header>
     <div className="global-wrapper" data-is-root-path={isRootPath}>
       <main>{children}</main>

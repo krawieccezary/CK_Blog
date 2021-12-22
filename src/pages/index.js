@@ -95,14 +95,14 @@ const BlogIndex = ({ data, location }) => {
 
   if(error) {
     return (
-      <Layout location={location} title={siteTitle}>
+      <Layout location={location} title={siteTitle} handleResetTag={handleResetTagClick}>
         <Seo title="All posts" />
         <FetchError errorMessage={error}/>
       </Layout>
     ) 
   } else if(isLoading) {  
       return (
-      <Layout location={location} title={siteTitle}>
+      <Layout location={location} title={siteTitle} handleResetTag={handleResetTagClick}>
         <Seo title="All posts" />
         <LoadingSpinner />
       </Layout>
@@ -111,7 +111,7 @@ const BlogIndex = ({ data, location }) => {
 
   if (posts.length === 0) {
     return (
-      <Layout location={location} title={siteTitle}>
+      <Layout location={location} title={siteTitle} handleResetTag={handleResetTagClick}>
         <Seo title="All posts" />
         <p>
           No blog posts found.
