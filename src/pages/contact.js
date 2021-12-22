@@ -12,6 +12,7 @@ const Contact = ({ data, location }) => {
     <Layout location={location} title={siteTitle}>
       <Seo title="Contact" />
       <h1>Contact</h1>
+      <p>If you have a question, comment or idea, let's write to me. I will try to help you.</p>
       <ContactForm />
     </Layout>
   )

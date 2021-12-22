@@ -81,14 +81,13 @@ const BlogIndex = ({ data, location }) => {
         .then(res => res.json())
         .then(
           result => {
-          setIsLoading(false);
+            setIsLoading(false);
           setState({
             posts: result.data.allPosts,
             tag: tag
           });
-        },
-          error => {
-            setFetchError(true);
+        }).catch(err => {
+          setFetchError(true);
         })
     }
   }
@@ -97,7 +96,7 @@ const BlogIndex = ({ data, location }) => {
     return (
       <Layout location={location} title={siteTitle} handleResetTag={handleResetTagClick}>
         <Seo title="All posts" />
-        <FetchError errorMessage={error}/>
+        <FetchError errorMessage={error.message}/>
       </Layout>
     ) 
   } else if(isLoading) {  
