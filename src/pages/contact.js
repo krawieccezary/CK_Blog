@@ -1,6 +1,7 @@
 import * as React from "react";
 import { graphql } from 'gatsby';
 
+import ContactForm from "../components/ContactForm";
 import Layout from "../components/layout";
 import Seo from "../components/seo";
 
@@ -11,6 +12,7 @@ const Contact = ({ data, location }) => {
     <Layout location={location} title={siteTitle}>
       <Seo title="Contact" />
       <h1>Contact</h1>
+      <ContactForm />
     </Layout>
   )
 }
