@@ -1,18 +1,14 @@
 {
-  "name": "gatsby-starter-blog",
+  "name": "ck_blog",
   "private": true,
-  "description": "A starter for a blog powered by Gatsby and Markdown",
+  "description": "Cezary Krawiec's blog",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
-  "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
-  },
+  "author": "Cezary Krawiec",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.36",
     "@fortawesome/free-brands-svg-icons": "^5.15.4",
     "@fortawesome/free-solid-svg-icons": "^5.15.4",
     "@fortawesome/react-fontawesome": "^0.1.16",
-    "@sendgrid/mail": "^7.6.0",
     "dotenv": "^10.0.0",
     "gatsby": "^4.2.0",
     "gatsby-plugin-config": "^1.0.7",
