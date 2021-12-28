@@ -64,6 +64,8 @@
   --color-ligth-gray: #efefef;
   --color-ligth-gray2: #a5a5a5;
   --color-white: #ffffff;
+  --color-success: rgb(111, 179, 122);
+  --color-error: rgb(189, 77, 77);
 }
 
 /* HTML elements */
