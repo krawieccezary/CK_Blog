@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 
 const FormField = styled.div`
@@ -13,11 +13,24 @@ const FormValidateInfo = styled.small`
   margin-top: 0.5rem;
 `;
 
+const message_animation = keyframes`
+  from {
+    transform: translateY(10%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+`;
+
 const SubmittingMessage = styled.span`
   display: block;
   margin: 2rem 0;
   padding: 1.5rem 2rem;
   color: var(--color-white);
+  animation: ${message_animation} .7s ease-in-out both;
   
   &.success {
     background-color: var(--color-success);
@@ -32,6 +45,7 @@ const SubmittingMessage = styled.span`
     text-decoration: none;
   }
 `;
+
 
 const SpanHoneyPot = styled.input`
   visibility: hidden;
