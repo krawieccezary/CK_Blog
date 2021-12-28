@@ -98,14 +98,14 @@ const BlogIndex = ({ data, location }) => {
   if(error) {
     return (
       <Layout location={location} title={siteTitle} handleResetTag={handleResetTagClick}>
-        <Seo title="All posts" />
+        <Seo title="Home" />
         <ErrorMessage errorImage={fetchErrorImage} errorMessage={'Houston, we have a problem! Come back later.'}/>
       </Layout>
     ) 
   } else if(isLoading) {  
       return (
       <Layout location={location} title={siteTitle} handleResetTag={handleResetTagClick}>
-        <Seo title="All posts" />
+        <Seo title="Home" />
         <LoadingSpinner />
       </Layout>
       )
@@ -114,7 +114,7 @@ const BlogIndex = ({ data, location }) => {
   if (posts.length === 0) {
     return (
       <Layout location={location} title={siteTitle} handleResetTag={handleResetTagClick}>
-        <Seo title="All posts" />
+        <Seo title="Home" />
         <ErrorMessage errorImage={emptyPostsImage} errorMessage={'No blog posts found.'}/>
       </Layout>
     )
@@ -122,7 +122,7 @@ const BlogIndex = ({ data, location }) => {
 
   return (
     <Layout location={location} title={siteTitle} handleResetTag={handleResetTagClick}>
-      <Seo title="All posts" />
+      <Seo title="Home" />
         {tag && 
           <div className="tag-heading-wrapper">
             <h2 className="tag-heading">{`#${tag.name}`}</h2>
