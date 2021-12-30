@@ -19,7 +19,6 @@ module.exports = {
     `gatsby-plugin-fontawesome-css`,
     `gatsby-plugin-image`,
     `gatsby-plugin-config`,
-    `gatsby-plugin-mdx`,
     {
       resolve: `gatsby-source-datocms`,
       options: {
