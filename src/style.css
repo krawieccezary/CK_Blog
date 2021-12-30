@@ -494,13 +494,8 @@ textarea:focus::placeholder {
   font-size: var(--fontSize-2);
 }
 
-.bio {
-  display: flex;
-  width: 100%;
-}
-
-.bio-content {
-  margin-right: var(--spacing-4);
+.bio-content > * {
+  margin-bottom: var(--spacing-6);
 }
 
 .blog-post header {

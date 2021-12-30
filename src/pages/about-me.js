@@ -15,9 +15,9 @@ const AboutMe = ({ data, location }) => {
       <div className="bio">
         <div className="bio-content">
           <h1>{aboutPage.header}</h1>
+          <GatsbyImage image={aboutPage.image.gatsbyImageData} alt="me"/>
           <main>{aboutPage.content}</main>
         </div>
-        <GatsbyImage image={aboutPage.image.gatsbyImageData} alt="me"/>
       </div>
     </Layout>
   )
