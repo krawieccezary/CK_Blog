@@ -1,11 +1,11 @@
-import * as React from "react"
-import { graphql } from "gatsby"
+import * as React from "react";
+import { graphql } from "gatsby";
+import { StaticImage } from "gatsby-plugin-image";
 
-import Layout from "../components/layout"
-import Seo from "../components/seo"
+import Layout from "../components/layout";
+import Seo from "../components/seo";
 
 import ErrorMessage from '../components/ErrorMessage';
-import pageNotFoundImage from '../images/page-404.png';
 
 
 const NotFoundPage = ({ data, location }) => {
@@ -14,7 +14,9 @@ const NotFoundPage = ({ data, location }) => {
   return (
     <Layout location={location} title={siteTitle}>
       <Seo title="404: Not Found" />
-      <ErrorMessage errorImage={pageNotFoundImage} errorMessage="I'm so sorry. Page not found."/>
+      <ErrorMessage errorMessage="I'm so sorry. Page not found." >
+        <StaticImage src='../images/page-404.png' width={500} alt="Error"/>
+      </ErrorMessage>
     </Layout>
   )
 }

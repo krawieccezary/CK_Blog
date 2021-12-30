@@ -1,6 +1,10 @@
 <!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
-
-<h1 align="center">
+<p align="center">
+  <a href="https://www.gatsbyjs.com">
+    <img alt="Gatsby" src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" />
+  </a>
+</p>
+<h1 align="center"></h1>
   Gatsby's blog starter
 </h1>
 

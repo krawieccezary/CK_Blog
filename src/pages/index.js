@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { graphql } from "gatsby";
+import { StaticImage } from "gatsby-plugin-image";
 
 import { formatDate } from "../utils/utils";
 
@@ -8,9 +9,6 @@ import Seo from "../components/seo"
 import Article from "../components/article";
 import ErrorMessage from '../components/ErrorMessage';
 import LoadingSpinner from '../components/LoadingSpinner';
-
-import fetchErrorImage from '../images/fetch-error.png';
-import emptyPostsImage from '../images/empty-blog.png';
 
 function getTagQuery(tagID){
   return `
@@ -99,7 +97,9 @@ const BlogIndex = ({ data, location }) => {
     return (
       <Layout location={location} title={siteTitle} handleResetTag={handleResetTagClick}>
         <Seo title="Home" />
-        <ErrorMessage errorImage={fetchErrorImage} errorMessage={'Houston, we have a problem! Come back later.'}/>
+        <ErrorMessage errorMessage='Houston, we have a problem! Come back later.' >
+          <StaticImage src='../images/fetch-error.png' width={500} alt="Error"/>
+        </ErrorMessage>
       </Layout>
     ) 
   } else if(isLoading) {  
@@ -115,7 +115,9 @@ const BlogIndex = ({ data, location }) => {
     return (
       <Layout location={location} title={siteTitle} handleResetTag={handleResetTagClick}>
         <Seo title="Home" />
-        <ErrorMessage errorImage={emptyPostsImage} errorMessage={'No blog posts found.'}/>
+        <ErrorMessage errorMessage='No blog posts found.' >
+          <StaticImage src='../images/empty-blog.png' width={500} alt="Error"/>
+        </ErrorMessage>
       </Layout>
     )
   }

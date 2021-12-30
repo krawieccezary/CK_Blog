@@ -2,20 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-
 const Wrapper = styled.div`
-  text-align: center
+  text-align: center;
 `;
 
-const Image = styled.img`
-  max-width: 500px;
-  width: 90%;
-`;
-
-const ErrorMessage = ({ errorMessage, errorImage }) => {
+const ErrorMessage = ({ errorMessage, children }) => {
   return (
     <Wrapper>
-      <Image src={errorImage} alt="Error" />
+      {children}
       <p>{ errorMessage }</p>
     </Wrapper>
   )
