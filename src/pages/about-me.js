@@ -1,6 +1,7 @@
 import * as React from "react";
 import { graphql } from 'gatsby';
 import { GatsbyImage } from 'gatsby-plugin-image';
+import { MDXRenderer } from "gatsby-plugin-mdx";
 
 import Layout from "../components/layout";
 import Seo from "../components/seo";
@@ -16,7 +17,7 @@ const AboutMe = ({ data, location }) => {
         <div className="bio-content">
           <h1>{aboutPage.header}</h1>
           <GatsbyImage image={aboutPage.image.gatsbyImageData} alt="me"/>
-          <main>{aboutPage.content}</main>
+          <main dangerouslySetInnerHTML={{__html: aboutPage.contentNode.childMarkdownRemark.html}}></main>
         </div>
       </div>
     </Layout>
@@ -34,6 +35,11 @@ export const aboutQuery = graphql`
       }
     }
     datoCmsAbout {
+      contentNode {
+        childMarkdownRemark {
+          html
+        }
+      }
       content
       header
       image {
