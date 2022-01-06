@@ -115,7 +115,7 @@ const BlogIndex = ({ data, location }) => {
     return (
       <Layout location={location} title={siteTitle} handleResetTag={handleResetTagClick}>
         <Seo title="Home" />
-        <ErrorMessage errorMessage='No blog posts found.' >
+        <ErrorMessage errorMessage='No blog posts found. Coming soon, stay tuned!' >
           <StaticImage src='../images/empty-blog.png' width={500} alt="Error"/>
         </ErrorMessage>
       </Layout>
