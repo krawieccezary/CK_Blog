@@ -38,11 +38,11 @@ const Menu = ({ isOpen, isMobile, isRootPath, title, setIsOpen }) => {
       <Link 
         className="nav-link" 
         activeClassName="active" 
-        to="/about-me">About me</Link>
+        to="/about-me">O mnie</Link>
       <Link 
         className="nav-link" 
         activeClassName="active" 
-        to="/contact">Contact</Link>
+        to="/contact">Kontakt</Link>
       <a className="nav-link nav-link--icon" href={`https://github.com/${social.github}`} rel="noreferrer" target="_blank">
         <FontAwesomeIcon icon={faGithub} />
       </a>

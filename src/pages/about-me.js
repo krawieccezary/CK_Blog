@@ -11,7 +11,7 @@ const AboutMe = ({ data, location }) => {
 
   return (
     <Layout location={location} title={siteTitle}>
-      <Seo title="About me" />
+      <Seo title="O mnie" />
       <div className="bio">
         <div className="bio-content">
           <h1>{aboutPage.header}</h1>
