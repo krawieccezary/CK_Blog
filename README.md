@@ -8,9 +8,9 @@
   CK Blog
 </h1>
 
-This is my personal blog about web and personal development.
+This is my personal blog about web development and personal growth.
 
-I created him with [Gatsby Starter Blog](https://github.com/gatsbyjs/gatsby-starter-blog) and [DatoCMS](https://www.datocms.com).
+I built it using [Gatsby Starter Blog](https://github.com/gatsbyjs/gatsby-starter-blog) and [DatoCMS](https://www.datocms.com).
 
 ## 🚀 Quick start
 
