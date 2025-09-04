@@ -2,11 +2,11 @@ import React from 'react';
 import { Link } from 'gatsby';
 
 
-const Logo = ({ isRootPath, title, handleResetTag, second, className, handleClick }) => (
+const Logo = ({ isRootPath, title, second, className, handleClick }) => (
   <>
     {isRootPath && !second ? (
       <h1 className="main-heading" >
-        <Link to="/" onClick={() => handleResetTag()}>
+        <Link to="/">
           {title}
         </Link>
       </h1>

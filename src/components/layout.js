@@ -5,7 +5,7 @@ import Logo from '../components/Logo';
 import Menu from "../components/Menu";
 import MenuBurger from "../components/MenuBurger";
 
-const Layout = ({ location, title, children, handleResetTag }) => {
+const Layout = ({ location, title, children }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const rootPath = `${__PATH_PREFIX__}/`;
@@ -22,7 +22,7 @@ const Layout = ({ location, title, children, handleResetTag }) => {
   return (
     <div className="global-wrapper-outer">
     <Header>
-        <Logo isRootPath={isRootPath} title={title} handleResetTag={handleResetTag} />
+        <Logo isRootPath={isRootPath} title={title}/>
         <MenuBurger isMobile={isMobile} setIsOpen={() => setIsOpen(!isOpen)} />
         <Menu 
           isOpen={isOpen} 

@@ -8,7 +8,7 @@ module.exports = {
     author: {
       name: `Cezary Krawiec`,
     },
-    description: `Blog about web and personal development`,
+    description: `Luźny blog o programowaniu`,
     siteUrl: `https://cezarykrawiec.pl`,
     social: {
       linkedin: `cezarykrawiec`,
