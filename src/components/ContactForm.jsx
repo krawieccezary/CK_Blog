@@ -114,7 +114,12 @@ const ContactForm = () => {
       </FormField>
       <SpanHoneyPot type="checkbox" name="question" value="1" onClick={() => setIsSpan(true)}/>
       <input className="button" type="submit" value="Wyślij" disabled={submitting} />
-      {submittingMessage.message && <SubmittingMessage className={submittingMessage.status} dangerouslySetInnerHTML={{ __html: submittingMessage.message}}></SubmittingMessage>}
+      {submittingMessage.message && (
+        <SubmittingMessage 
+          className={`submitting-message ${submittingMessage.status}`}
+          dangerouslySetInnerHTML={{ __html: submittingMessage.message}}
+        />
+      )}
     </form>
   )
 }

@@ -66,11 +66,18 @@
   --color-white: #ffffff;
   --color-success: rgb(111, 179, 122);
   --color-error: rgb(189, 77, 77);
-  --color-highlight: #2d3748;
+  --color-highlight: #1f2937;
 
   /* Theme base */
   --color-bg: #ffffff;
   --color-surface: #ffffff;
+
+  /* Form variables */
+  --color-input-bg: #ffffff;
+  --color-input-border: var(--color-ligth-gray);
+  --color-input-border-focus: var(--color-ligth-gray2);
+  --color-input-text: var(--color-text);
+  --color-input-placeholder: var(--color-text-light);
 }
 
 .theme-dark {
@@ -84,6 +91,13 @@
 
   --color-ligth-gray: #374151;
   --color-ligth-gray2: #4b5563;
+
+  /* Form dark mode */
+  --color-input-bg: #2d3748;
+  --color-input-border: var(--color-ligth-gray);
+  --color-input-border-focus: var(--color-accent);
+  --color-input-text: var(--color-text);
+  --color-input-placeholder: var(--color-text-light);
 }
 
 /* HTML elements */
@@ -288,11 +302,12 @@ input {
   display: block;
   width: 100%;
   padding: var(--spacing-3) var(--spacing-4);
-  border: 1px solid var(--color-ligth-gray);
+  border: 1px solid var(--color-input-border);
   box-shadow: none;
   outline: none;
-  transition: border-color 0.3s ease-in-out;
-  color: var(--color-text);
+  transition: border-color 0.3s ease;
+  color: var(--color-input-text);
+  background-color: var(--color-input-bg);
   font-family: var(--font-body);
   font-size: var(--fontSize-1);
 }
@@ -305,12 +320,17 @@ textarea {
 
 input:focus,
 textarea:focus {
-  border-color: var(--color-ligth-gray2);
+  border-color: var(--color-input-border-focus);
 }
 
 input:focus::placeholder,
 textarea:focus::placeholder {
   opacity: 0;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--color-input-placeholder);
 }
 
 /* Custom classes */
@@ -597,8 +617,24 @@ textarea:focus::placeholder {
 }
 
 .theme-dark .blog-post pre {
-  /* background-color: var(--color-highlight) !important; */
-  background-color: #1f2937 !important;
+  background-color: var(--color-highlight) !important;
+}
+
+/* Contact form dark mode overrides */
+.theme-dark .submitting-message {
+  background-color: var(--color-surface) !important;
+  border: 1px solid var(--color-ligth-gray);
+  color: var(--color-text) !important;
+}
+
+.theme-dark .submitting-message.success {
+  background-color: var(--color-success) !important;
+  color: var(--color-white) !important;
+}
+
+.theme-dark .submitting-message.error {
+  background-color: var(--color-error) !important;
+  color: var(--color-white) !important;
 }
 
 /* Media queries */
