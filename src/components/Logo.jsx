@@ -11,7 +11,7 @@ const Logo = ({ isRootPath, title, handleResetTag, second, className, handleClic
         </Link>
       </h1>
     ) : (
-      <Link className={`main-heading ${className}`} to="/" onClick={handleClick}>
+      <Link className={`main-heading ${className ? className : ''}`} to="/" onClick={handleClick}>
         {title}
       </Link>
     )}

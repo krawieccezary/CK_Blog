@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons'
 
 import Logo from '../components/Logo';
+import DarkModeToggle from './DarkModeToggle';
 
 const StyledLogo = styled(Logo)`
   margin-bottom: 2rem !important;
@@ -26,7 +27,7 @@ const Menu = ({ isOpen, isMobile, isRootPath, title, setIsOpen }) => {
 `);
 
   return (
-    <nav className={isOpen ? 'active' : null}>
+    <nav className={`main-nav ${isOpen ? 'active' : ''}`}>
       { isMobile && 
         <StyledLogo 
           second 
@@ -43,12 +44,15 @@ const Menu = ({ isOpen, isMobile, isRootPath, title, setIsOpen }) => {
         className="nav-link" 
         activeClassName="active" 
         to="/kontakt">Kontakt</Link>
+
       <a className="nav-link nav-link--icon" href={`https://github.com/${social.github}`} rel="noreferrer" target="_blank">
         <FontAwesomeIcon icon={faGithub} />
       </a>
       <a className="nav-link nav-link--icon" href={`https://www.linkedin.com/in/${social.linkedin}`} rel="noreferrer" target="_blank">
         <FontAwesomeIcon icon={faLinkedin} />
       </a>
+
+      <DarkModeToggle />
     </nav>
   )
 }
