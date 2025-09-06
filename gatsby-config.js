@@ -19,6 +19,7 @@ module.exports = {
     `gatsby-plugin-fontawesome-css`,
     `gatsby-transformer-remark`,
     `gatsby-plugin-image`,
+    `gatsby-plugin-sitemap`,
     `gatsby-plugin-config`,
     {
       resolve: `gatsby-source-datocms`,
@@ -109,6 +110,20 @@ module.exports = {
       },
     },
     `gatsby-plugin-react-helmet`,
+    {
+      resolve: `gatsby-plugin-webfonts`,
+      options: {
+        fonts: {
+          google: [
+            {
+              family: "Merriweather",
+              variants: ["400", "700"],
+              subsets: ["latin", "latin-ext"],
+            },
+          ],
+        },
+      },
+    },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,

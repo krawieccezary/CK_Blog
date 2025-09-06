@@ -10,9 +10,9 @@ const Contact = ({ data, location }) => {
 
   return (
     <Layout location={location} title={siteTitle}>
-      <Seo title="Contact" />
-      <h1>Contact</h1>
-      <p>If you have a question, comment or idea, let's write to me. I will try to help you.</p>
+      <Seo title="Kontakt" />
+      <h1>Kontakt</h1>
+      <p>Jeśli masz pytanie, komentarz lub pomysł, napisz do mnie. Postaram się pomóc.</p>
       <ContactForm />
     </Layout>
   )

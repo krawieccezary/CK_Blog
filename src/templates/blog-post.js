@@ -122,7 +122,7 @@ export const pageQuery = graphql`
         }
       }
       meta {
-        publishedAt(formatString: "D-M-Y")
+        publishedAt(formatString: "DD-MM-YYYY")
       }
       slug
       title

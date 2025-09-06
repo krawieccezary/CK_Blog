@@ -13,8 +13,8 @@ const NotFoundPage = ({ data, location }) => {
 
   return (
     <Layout location={location} title={siteTitle}>
-      <Seo title="404: Not Found" />
-      <ErrorMessage errorMessage="I'm so sorry. Page not found." >
+      <Seo title="404: Brak strony" />
+      <ErrorMessage errorMessage="Przykro mi, nie znalazłem takiej strony" >
         <StaticImage src='../images/page-404.png' width={500} alt="Error"/>
       </ErrorMessage>
     </Layout>

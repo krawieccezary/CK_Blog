@@ -64,7 +64,7 @@ const ContactForm = () => {
       setSubmittingMessage({status: null, message: null});
       const { email, message: body, name } = data;
   
-      const errorMessage = `Oops! Something gone wrong! Maybe try later or send message to <a href='mailto:web@cezarykrawiec.pl'>web@cezarykrawiec.pl</a>`;
+      const errorMessage = `Oops! Coś poszło nie tak! Spróbuj później lub wyślij wiadomość na <a href='mailto:web@cezarykrawiec.pl'>web@cezarykrawiec.pl</a>`;
    
       try {
         const response = await fetch(process.env.GATSBY_EMAIL_FUNCTION_URL, {
@@ -77,7 +77,7 @@ const ContactForm = () => {
   
         if (response.status === 200) {
           setSubmitting(false);
-          setSubmittingMessage({status: 'success', message: `${name}, thanks for the message! I will response soon.`});
+          setSubmittingMessage({status: 'success', message: `${name}, dzięki za wiadomość! Wkrótce odpowiem.`});
           reset();
           
         } else {
@@ -101,20 +101,25 @@ const ContactForm = () => {
       method="post"
     >
       <FormField>
-        <input type="text" {...register('name', { required: true })} placeholder="Name"/>
-        {errors.name && <FormValidateInfo>Name is require</FormValidateInfo>}
+        <input type="text" {...register('name', { required: true })} placeholder="Imię"/>
+        {errors.name && <FormValidateInfo>Imię jest wymagane</FormValidateInfo>}
       </FormField>
       <FormField>
-        <input type="email" {...register('email', { required: true })} placeholder="Email"/>
-        {errors.email && <FormValidateInfo>Email is require</FormValidateInfo>}
+        <input type="email" {...register('email', { required: true })} placeholder="E-mail"/>
+        {errors.email && <FormValidateInfo>Email jest wymagany</FormValidateInfo>}
       </FormField>
       <FormField>
-        <textarea name="message" {...register('message', { required: true })} placeholder="Message"></textarea>
-        {errors.message && <FormValidateInfo>Message is require</FormValidateInfo>}
+        <textarea name="message" {...register('message', { required: true })} placeholder="Wiadomość"></textarea>
+        {errors.message && <FormValidateInfo>Wiadomość jest wymagana</FormValidateInfo>}
       </FormField>
       <SpanHoneyPot type="checkbox" name="question" value="1" onClick={() => setIsSpan(true)}/>
-      <input className="button" type="submit" value="Send" disabled={submitting} />
-      {submittingMessage.message && <SubmittingMessage className={submittingMessage.status} dangerouslySetInnerHTML={{ __html: submittingMessage.message}}></SubmittingMessage>}
+      <input className="button" type="submit" value="Wyślij" disabled={submitting} />
+      {submittingMessage.message && (
+        <SubmittingMessage 
+          className={`submitting-message ${submittingMessage.status}`}
+          dangerouslySetInnerHTML={{ __html: submittingMessage.message}}
+        />
+      )}
     </form>
   )
 }

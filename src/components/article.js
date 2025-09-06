@@ -25,7 +25,9 @@ const Article = ({ slug, title, introduction, tags, setTag, publishedAt }) => (
       />
     </section>
     <footer className="post-list-item__tags-footer"> 
-      {tags.map(tag => <button key={tag.name} onClick={() => setTag(tag)}>{`#${tag.name}`}</button>)}
+      {tags.map(
+        tag => <button className="post-list-item__tag" key={tag.name} onClick={() => setTag(tag)}>{`#${tag.name}`}</button>
+      )}
     </footer>
   </article>
 ) 

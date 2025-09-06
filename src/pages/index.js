@@ -159,7 +159,7 @@ export const pageQuery = graphql`
           name
         }
         meta {
-          publishedAt(formatString: "D-M-Y")
+          publishedAt(formatString: "DD-MM-YYYY")
         }
       }
     }

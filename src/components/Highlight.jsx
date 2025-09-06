@@ -3,7 +3,6 @@ import styled from "styled-components";
 import Highlight, { defaultProps } from "prism-react-renderer";
 import theme from "prism-react-renderer/themes/shadesOfPurple";
 
-
 const Pre = styled.pre`
   text-align: left;
   margin: 1em -8rem;
