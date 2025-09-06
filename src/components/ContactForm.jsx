@@ -62,20 +62,37 @@ const ContactForm = () => {
     if(!isSpan){
       setSubmitting(true);
       setSubmittingMessage({status: null, message: null});
-      const { email, message: body, name } = data;
+      const { email: email_address, message, name } = data;
   
       const errorMessage = `Oops! Coś poszło nie tak! Spróbuj później lub wyślij wiadomość na <a href='mailto:web@cezarykrawiec.pl'>web@cezarykrawiec.pl</a>`;
    
+      const email = {
+        "email": {
+          "text": message,
+          "subject": "Formularz kontaktowy",
+          "from": {
+            "name": name,
+            "email": email_address
+          },
+          "to": [
+            {
+              "name": "Cezary Krawiec",
+              "email": "web@cezarykrawiec.pl"
+            }
+          ]
+        }
+      }
+
       try {
         const response = await fetch(process.env.GATSBY_EMAIL_FUNCTION_URL, {
           method: "post",
           headers: {
-            "Content-type": "application/x-www-form-urlencoded; charset=UTF-8",
+            "Content-Type": "application/json",
           },
-          body: new URLSearchParams({ email, name, body }).toString(),
+          body: JSON.stringify(email),
         })
   
-        if (response.status === 200) {
+        if (response.result) {
           setSubmitting(false);
           setSubmittingMessage({status: 'success', message: `${name}, dzięki za wiadomość! Wkrótce odpowiem.`});
           reset();
@@ -86,6 +103,7 @@ const ContactForm = () => {
         }
   
       } catch (error) {
+        console.log(error)
         setSubmitting(false);
         setSubmittingMessage({status: 'error', message: errorMessage});
       };
