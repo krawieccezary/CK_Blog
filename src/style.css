@@ -44,7 +44,7 @@
   --fontSize-root: 16px;
   --lineHeight-none: 1;
   --lineHeight-tight: 1.1;
-  --lineHeight-normal: 1.5;
+  --lineHeight-normal: 1.3;
   --lineHeight-relaxed: 1.625;
   /* 1.200 Minor Third Type Scale */
   --fontSize-0: 0.833rem;
@@ -175,6 +175,7 @@ h1 {
 
 h2 {
   font-size: var(--fontSize-5);
+  line-height: var(--lineHeight-normal);
 }
 
 h3 {
@@ -534,6 +535,10 @@ textarea::placeholder {
   color: var(--color-text);
 }
 
+.post-list-item__tag:hover {
+  color: var(--color-accent);
+}
+
 .header-link-home {
   font-weight: var(--fontWeight-bold);
   font-family: var(--font-heading);
@@ -691,6 +696,32 @@ textarea::placeholder {
   .global-header .nav-link--icon {
     width: auto;
     margin: 1rem;
+  }
+
+  .post-list {
+    margin-top: var(--spacing-6);
+  }
+
+  .post-list-item h2 {
+    line-height: var(--lineHeight-tight);
+  }
+
+  .blog-post {
+    margin-top: var(--spacing-6);
+  }
+
+  .blog-post header {
+    margin-bottom: var(--spacing-4);
+  }
+
+  .blog-post header h1 {
+    font-size: var(--fontSize-4);
+    margin-bottom: var(--spacing-1);
+  }
+
+  .blog-post h2 {
+    font-size: var(--fontSize-3);
+    margin-top: var(--spacing-8);
   }
 
   /*** Bio ***/

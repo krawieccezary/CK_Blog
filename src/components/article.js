@@ -17,12 +17,7 @@ const Article = ({ slug, title, introduction, tags, setTag, publishedAt }) => (
       <small>{publishedAt}</small>
     </header>
     <section>
-      <p
-        dangerouslySetInnerHTML={{
-          __html: introduction,
-        }}
-        itemProp="description"
-      />
+      <p itemProp="description">{introduction}</p>
     </section>
     <footer className="post-list-item__tags-footer"> 
       {tags.map(

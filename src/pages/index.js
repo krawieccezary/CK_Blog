@@ -15,7 +15,7 @@ function getTagQuery(tagID){
   {
     allPosts(
       orderBy: _publishedAt_DESC,
-      filter: {_status: {eq: published}, tags: {anyIn: ${tagID}}}
+      filter: {_status: {eq: published}, tags: {anyIn: "${tagID}"}}
     ) {
       id
       title
@@ -73,21 +73,19 @@ const BlogIndex = ({ data, location }) => {
 
   const handleTagClick = tag => fetchPostsByTag(tag);
   
-
   function fetchPostsByTag(tag){
     if(tag){
       setIsLoading(true);
       const tagID = tag.originalId ? tag.originalId : tag.id;
       fetchData(tagID)
         .then(res => res.json())
-        .then(
-          result => {
-            setIsLoading(false);
-            setState({
-              posts: result.data.allPosts,
-              tag: tag
-            });
-        }).catch(err => {
+        .then(result => {
+          setIsLoading(false);
+          setState({
+            posts: result.data.allPosts,
+            tag: tag
+          });
+        }).catch(() => {
           setFetchError(true);
         })
     }
@@ -97,7 +95,7 @@ const BlogIndex = ({ data, location }) => {
     return (
       <Layout location={location} title={siteTitle} handleResetTag={handleResetTagClick}>
         <Seo title="Home" />
-        <ErrorMessage errorMessage='Houston, we have a problem! Come back later.' >
+        <ErrorMessage errorMessage='Houston, mamy problem! Wróć później.' >
           <StaticImage src='../images/fetch-error.png' width={500} alt="Error"/>
         </ErrorMessage>
       </Layout>
@@ -115,7 +113,7 @@ const BlogIndex = ({ data, location }) => {
     return (
       <Layout location={location} title={siteTitle} handleResetTag={handleResetTagClick}>
         <Seo title="Home" />
-        <ErrorMessage errorMessage='No blog posts found. Coming soon, stay tuned!' >
+        <ErrorMessage errorMessage='Brak wpisów na blogu. Wkrótce coś się pojawi – bądź na bieżąco!' >
           <StaticImage src='../images/empty-blog.png' width={500} alt="Error"/>
         </ErrorMessage>
       </Layout>
@@ -131,10 +129,12 @@ const BlogIndex = ({ data, location }) => {
             <button onClick={() => handleResetTagClick()} className="tag-heading-wrapper__button"></button>
           </div>
         }
-        {posts.map(post => {
-          const publishedAt = post.meta ? post.meta.publishedAt : formatDate(post._publishedAt);
-          return <Article key={post.id} publishedAt={publishedAt} {...post} setTag={handleTagClick} />
-        })}
+        <div className="post-list">
+          {posts.map(post => {
+            const publishedAt = post.meta ? post.meta.publishedAt : formatDate(post._publishedAt);
+            return <Article key={post.id} publishedAt={publishedAt} {...post} setTag={handleTagClick} />
+          })}
+        </div>
     </Layout>
   )
 }
