@@ -45,12 +45,14 @@ const Menu = ({ isOpen, isMobile, isRootPath, title, setIsOpen }) => {
         activeClassName="active" 
         to="/kontakt">Kontakt</Link>
 
-      <a className="nav-link nav-link--icon" href={`https://github.com/${social.github}`} rel="noreferrer" target="_blank">
-        <FontAwesomeIcon icon={faGithub} />
-      </a>
-      <a className="nav-link nav-link--icon" href={`https://www.linkedin.com/in/${social.linkedin}`} rel="noreferrer" target="_blank">
-        <FontAwesomeIcon icon={faLinkedin} />
-      </a>
+      <div>
+        <a className="nav-link nav-link--icon" href={`https://github.com/${social.github}`} rel="noreferrer" target="_blank">
+          <FontAwesomeIcon icon={faGithub} />
+        </a>
+        <a className="nav-link nav-link--icon" href={`https://www.linkedin.com/in/${social.linkedin}`} rel="noreferrer" target="_blank">
+          <FontAwesomeIcon icon={faLinkedin} />
+        </a>
+      </div>
 
       <DarkModeToggle />
     </nav>

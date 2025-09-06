@@ -399,6 +399,7 @@ textarea::placeholder {
 
 .main-nav {
   display: flex;
+  align-items: center;
 }
 
 .nav-link {
@@ -406,6 +407,7 @@ textarea::placeholder {
   text-decoration: none;
   margin: 0 var(--spacing-3);
   position: relative;
+  display: inline-block;
 }
 .nav-link.active::after {
   position: absolute;
@@ -674,6 +676,7 @@ textarea::placeholder {
     flex-wrap: wrap;
     align-content: center;
     text-align: center;
+    flex-direction: column;
     z-index: 1;
     transform: translateX(100%);
     transition: transform 0.5s ease-in-out;
@@ -683,8 +686,12 @@ textarea::placeholder {
     transform: translateX(0);
   }
 
+  .theme-toggle {
+    margin: auto auto var(--spacing-16);
+  }
+
   .main-heading {
-    margin: 0 auto;
+    margin: auto auto;
   }
 
   .global-header .nav-link {
