@@ -19,6 +19,7 @@ module.exports = {
     `gatsby-plugin-fontawesome-css`,
     `gatsby-transformer-remark`,
     `gatsby-plugin-image`,
+    `gatsby-plugin-sitemap`,
     `gatsby-plugin-config`,
     {
       resolve: `gatsby-source-datocms`,
