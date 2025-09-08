@@ -95,8 +95,8 @@ const BlogIndex = ({ data, location }) => {
     return (
       <Layout location={location} title={siteTitle} handleResetTag={handleResetTagClick}>
         <Seo title="Home" />
-        <ErrorMessage errorMessage='Houston, mamy problem! Wróć później.' >
-          <StaticImage src='../images/fetch-error.png' width={500} alt="Error"/>
+        <ErrorMessage errorMessage='Uups! Mamy problem! Wróć później.' >
+          <StaticImage src='../images/internal-error.svg' width={500} alt="Error"/>
         </ErrorMessage>
       </Layout>
     ) 
@@ -114,7 +114,7 @@ const BlogIndex = ({ data, location }) => {
       <Layout location={location} title={siteTitle} handleResetTag={handleResetTagClick}>
         <Seo title="Home" />
         <ErrorMessage errorMessage='Brak wpisów na blogu. Wkrótce coś się pojawi – bądź na bieżąco!' >
-          <StaticImage src='../images/empty-blog.png' width={500} alt="Error"/>
+          <StaticImage src='../images/empty-blog.svg' width={500} alt="Error"/>
         </ErrorMessage>
       </Layout>
     )

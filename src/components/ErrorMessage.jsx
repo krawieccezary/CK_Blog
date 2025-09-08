@@ -6,11 +6,15 @@ const Wrapper = styled.div`
   text-align: center;
 `;
 
+const Message = styled.p`
+  margin-top: 30px;
+`;
+
 const ErrorMessage = ({ errorMessage, children }) => {
   return (
     <Wrapper>
       {children}
-      <p>{ errorMessage }</p>
+      <Message>{ errorMessage }</Message>
     </Wrapper>
   )
 }
