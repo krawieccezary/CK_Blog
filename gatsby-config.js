@@ -8,7 +8,7 @@ module.exports = {
     author: {
       name: `Cezary Krawiec`,
     },
-    description: `Blog about web and personal development`,
+    description: `Programowanie full-stack w praktyce. Frontend, backend, nowoczesne frameworki i narzędzia dla developerów.`,
     siteUrl: `https://cezarykrawiec.pl`,
     social: {
       linkedin: `cezarykrawiec`,
