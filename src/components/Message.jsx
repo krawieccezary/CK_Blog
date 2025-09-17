@@ -6,24 +6,24 @@ const Wrapper = styled.div`
   text-align: center;
 `;
 
-const Message = styled.p`
+const Content = styled.p`
   margin-top: 30px;
 `;
 
-const ErrorMessage = ({ errorMessage, children }) => {
+const Message = ({ content, children }) => {
   return (
     <Wrapper>
       {children}
-      <Message>{ errorMessage }</Message>
+      <Content>{ content }</Content>
     </Wrapper>
   )
 }
 
-ErrorMessage.propTypes = {
-  errorMessage: PropTypes.string
+Message.propTypes = {
+  content: PropTypes.string
 };
 
-export default ErrorMessage;
+export default Message;
 
 
 

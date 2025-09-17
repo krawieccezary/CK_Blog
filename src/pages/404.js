@@ -5,7 +5,7 @@ import { StaticImage } from "gatsby-plugin-image";
 import Layout from "../components/layout";
 import Seo from "../components/seo";
 
-import ErrorMessage from '../components/ErrorMessage';
+import Message from '../components/Message';
 
 
 const NotFoundPage = ({ data, location }) => {
@@ -14,9 +14,9 @@ const NotFoundPage = ({ data, location }) => {
   return (
     <Layout location={location} title={siteTitle}>
       <Seo title="404: Brak strony" />
-      <ErrorMessage errorMessage="Przykro mi, nie znalazłem takiej strony" >
+      <Message content="Przykro mi, nie znalazłem takiej strony" >
         <StaticImage src='../images/page-not-found.svg' width={500} alt="Error"/>
-      </ErrorMessage>
+      </Message>
     </Layout>
   )
 }

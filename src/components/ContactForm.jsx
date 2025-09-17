@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import styled, { keyframes } from 'styled-components';
 
+import { useEmail } from '../composables/use-email';
+
 
 const FormField = styled.div`
   margin-bottom: 1rem;
@@ -52,66 +54,51 @@ const SpanHoneyPot = styled.input`
   height: 0;
 `;
 
-const ContactForm = () => {
+const ContactForm = ({ onSuccess, setUserName }) => {
   const { register, handleSubmit, formState: { errors }, reset } = useForm();
   const [submitting, setSubmitting] = useState(false);
   const [submittingMessage, setSubmittingMessage] = useState({status: null, message: null});
   const [isSpan, setIsSpan] = useState(false);
+  const { send } = useEmail();
 
   const onSubmit = async data => {
-    if(!isSpan){
-      setSubmitting(true);
-      setSubmittingMessage({status: null, message: null});
-      const { email: email_address, message, name } = data;
-  
-      const errorMessage = `Oops! Coś poszło nie tak! Spróbuj później lub wyślij wiadomość na <a href='mailto:web@cezarykrawiec.pl'>web@cezarykrawiec.pl</a>`;
-   
-      const email = {
-        "email": {
-          "text": message,
-          "subject": "Formularz kontaktowy",
-          "from": {
-            "name": name,
-            "email": email_address
-          },
-          "to": [
-            {
-              "name": "Cezary Krawiec",
-              "email": "web@cezarykrawiec.pl"
-            }
-          ]
-        }
-      }
-
-      try {
-        const response = await fetch(process.env.GATSBY_EMAIL_FUNCTION_URL, {
-          method: "post",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(email),
-        })
-  
-        if (response.result) {
-          setSubmitting(false);
-          setSubmittingMessage({status: 'success', message: `${name}, dzięki za wiadomość! Wkrótce odpowiem.`});
-          reset();
-          
-        } else {
-          setSubmitting(false);
-          setSubmittingMessage({status: 'error', message: errorMessage});
-        }
-  
-      } catch (error) {
-        console.log(error)
-        setSubmitting(false);
-        setSubmittingMessage({status: 'error', message: errorMessage});
-      };
+    if(isSpan){
+      return;
     }
 
+    setSubmitting(true);
+    setSubmittingMessage({status: null, message: null});
+    const { email: email_address, message, name } = data;
+    setUserName(name);
+
+    const errorMessage = `Uups! Coś poszło nie tak! Spróbuj ponownie później lub wyślij wiadomość na <a href='mailto:web@cezarykrawiec.pl'>web@cezarykrawiec.pl</a>`;
+  
+    const emailMessage = `
+      Nadawca: ${name}
+      E-mail: ${email_address}
+
+      Wiadomość: ${message}
+    `;
+
+    try {
+      const response = await send(emailMessage)
+
+      if (!response.ok) {
+        setSubmitting(false);
+        setSubmittingMessage({status: 'error', message: errorMessage});
+
+        return;
+      }
+
+      setSubmitting(false);
+      onSuccess();
+      reset();
+
+    } catch (error) {
+      setSubmitting(false);
+      setSubmittingMessage({status: 'error', message: errorMessage});
+    };
   }
-
-
 
   return (
     <form 

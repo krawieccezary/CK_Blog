@@ -7,7 +7,7 @@ import { formatDate } from "../utils/utils";
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import Article from "../components/article";
-import ErrorMessage from '../components/ErrorMessage';
+import Message from '../components/Message';
 import LoadingSpinner from '../components/LoadingSpinner';
 
 function getTagQuery(tagID){
@@ -95,9 +95,9 @@ const BlogIndex = ({ data, location }) => {
     return (
       <Layout location={location} title={siteTitle} handleResetTag={handleResetTagClick}>
         <Seo title="Home" />
-        <ErrorMessage errorMessage='Uups! Mamy problem! Wróć później.' >
+        <Message content='Uups! Mamy problem! Wróć później.' >
           <StaticImage src='../images/internal-error.svg' width={500} alt="Error"/>
-        </ErrorMessage>
+        </Message>
       </Layout>
     ) 
   } else if(isLoading) {  
@@ -113,9 +113,9 @@ const BlogIndex = ({ data, location }) => {
     return (
       <Layout location={location} title={siteTitle} handleResetTag={handleResetTagClick}>
         <Seo title="Home" />
-        <ErrorMessage errorMessage='Brak wpisów na blogu. Wkrótce coś się pojawi – bądź na bieżąco!' >
+        <Message content='Brak wpisów na blogu. Wkrótce coś się pojawi – bądź na bieżąco!' >
           <StaticImage src='../images/empty-blog.svg' width={500} alt="Error"/>
-        </ErrorMessage>
+        </Message>
       </Layout>
     )
   }
