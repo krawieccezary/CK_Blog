@@ -100,6 +100,15 @@
   --color-input-placeholder: var(--color-text-light);
 }
 
+@font-face {
+  font-family: "Excalifont";
+  src: url("./assets/fonts/Excalifont-Regular.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+
 /* HTML elements */
 
 *,
@@ -642,6 +651,23 @@ textarea::placeholder {
 .theme-dark .submitting-message.error {
   background-color: var(--color-error) !important;
   color: var(--color-white) !important;
+}
+
+.inline-svg {
+  text-align: center;
+  margin: var(--spacing-6) auto;
+}
+
+.inline-svg rect {
+  fill: var(--color-bg);
+}
+
+.inline-svg path {
+  stroke: var(--color-text);
+}
+
+.inline-svg text {
+  fill: var(--color-text);
 }
 
 /* Media queries */

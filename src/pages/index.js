@@ -96,7 +96,7 @@ const BlogIndex = ({ data, location }) => {
       <Layout location={location} title={siteTitle} handleResetTag={handleResetTagClick}>
         <Seo title="Home" />
         <Message content='Uups! Mamy problem! Wróć później.' >
-          <StaticImage src='../images/internal-error.svg' width={500} alt="Error"/>
+          <StaticImage src='../assets/images/internal-error.svg' width={500} alt="Error"/>
         </Message>
       </Layout>
     ) 
@@ -114,7 +114,7 @@ const BlogIndex = ({ data, location }) => {
       <Layout location={location} title={siteTitle} handleResetTag={handleResetTagClick}>
         <Seo title="Home" />
         <Message content='Brak wpisów na blogu. Wkrótce coś się pojawi – bądź na bieżąco!' >
-          <StaticImage src='../images/empty-blog.svg' width={500} alt="Error"/>
+          <StaticImage src='../assets/images/empty-blog.svg' width={500} alt="Error"/>
         </Message>
       </Layout>
     )

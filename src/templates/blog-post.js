@@ -5,19 +5,21 @@ import { isCode } from 'datocms-structured-text-utils';
 import { GatsbyImage } from 'gatsby-plugin-image';
 
 import Highlight from "../components/Highlight";
-import Layout from "../components/layout"
-import Seo from "../components/seo"
+import Layout from "../components/layout";
+import Seo from "../components/seo";
+import InlineSvg from "../components/InlineSvg";
 
 const BlogPostTemplate = ({ data, location }) => {
   const post = data.datoCmsPost;
   const siteTitle = data.site.siteMetadata?.title || `Title`
   const { previous, next } = data
 
+  console.log(post)
   return (
     <Layout location={location} title={siteTitle}>
       <Seo
-        title={post.title}
-        description={post.introduction}
+        title={post.seoMeta.title}
+        description={post.seoMeta.description}
       />
       <article
         className="blog-post"
@@ -45,6 +47,12 @@ const BlogPostTemplate = ({ data, location }) => {
           renderBlock={({ record }) => {
             switch (record.__typename) {
               case 'DatoCmsImage':
+                if (record.image.format === 'svg') {
+                  return <InlineSvg 
+                          url={record.image.url}
+                          alt={record.image.alt}
+                          />;
+                }
                 return <GatsbyImage 
                         image={record.image.gatsbyImageData} 
                         alt={record.image.alt ? record.image.alt : ''} 
@@ -116,7 +124,9 @@ export const pageQuery = graphql`
             image {
               alt
               title
-              gatsbyImageData
+              gatsbyImageData,
+              url,
+              format
             }
           }
         }
@@ -130,12 +140,16 @@ export const pageQuery = graphql`
         originalId
         name
       }
+      seoMeta {
+        description
+        title
+      }
     }
-    previous: datoCmsPost(id: { eq: $previousPostId }) {
+    previous: datoCmsPost(id: { eq: $nextPostId }) {
       slug
       title
     }
-    next: datoCmsPost(id: { eq: $nextPostId }) {
+    next: datoCmsPost(id: { eq: $previousPostId }) {
       slug
       title
     }

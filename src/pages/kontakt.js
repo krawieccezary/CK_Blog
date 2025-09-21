@@ -17,7 +17,7 @@ const Contact = ({ data, location }) => {
       <Seo title="Kontakt" />
       {isSuccess ? (
         <Message content={`${userName}, dzięki za wiadomość! Wkrótce odpowiem.`}>
-          <StaticImage src='../images/mail-sent.svg' width={400} alt="Error"/>
+          <StaticImage src='../assets/images/mail-sent.svg' width={400} alt="Error"/>
         </Message>
       ) : (
         <div>
