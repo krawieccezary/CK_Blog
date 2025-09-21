@@ -4,7 +4,6 @@ exports.handler = async function(event, context) {
   try {
     const email = JSON.parse(event.body || '{}');
 
-    console.log(email)
     if (!email) {
       return {
         statusCode: 400,
