@@ -17,7 +17,7 @@ export const useEmail = () => {
       }
     };
 
-    return fetch(`${process.env.NETLIFY_FUNCTIONS_DIR}/send-email`, {
+    return fetch('/.netlify/functions/send-email', {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
