@@ -11,8 +11,8 @@ exports.handler = async function(event, context) {
       };
     }
 
-    const clientId = process.env.SENDPULSE_CLIENT_ID;
-    const clientSecret = process.env.SENDPULSE_CLIENT_SECRET;
+    const clientId = process.env.GATSBY_SENDPULSE_CLIENT_ID;
+    const clientSecret = process.env.GATSBY_SENDPULSE_CLIENT_SECRET;
 
     const tokenResp = await fetch('https://api.sendpulse.com/oauth/access_token', {
       method: 'POST',
